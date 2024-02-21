@@ -8,6 +8,10 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,13 +54,13 @@ class _HomePageState extends State<HomePage> {
                             height: 180,
                             decoration: BoxDecoration(
                                 color: Colors.yellow,
-                              shape: BoxShape.circle
+                              shape: BoxShape.circle,
                             ),
                             child: IconButton(
                               onPressed: ()=>{
                                 print("container 1")
                               },
-                              icon: Icon(Icons.lightbulb_outlined),
+                              icon: Icon(Icons.lightbulb_outlined,size: 45,),
                             ),
                           ),
                           Container(
@@ -95,7 +99,28 @@ class _HomePageState extends State<HomePage> {
                       ),
                   ],),
                 )),
-            Expanded(child: Container(color: Colors.red,)),
+            Expanded(child:
+            Container(
+              color: Colors.grey.shade300,
+              child: Row(
+                children: [
+                  Container(
+                    margin: EdgeInsets.only(right: 100),
+                    width: MediaQuery.of(context).size.width/4,
+                    height: MediaQuery.of(context).size.width/4,
+                    color: Colors.blue,
+                  ),
+                  Container(
+                    padding: EdgeInsets.only(left: 14,top: 20,bottom: 30),
+                    width: 100,
+                    height: 100,
+                    color: Colors.red,
+                    child: Container(child: Text("test"),color: Colors.blue,),
+                  ),
+                ],
+              ),
+            )
+            ),
             Expanded(child: Container(color: Colors.yellow,))
           ],
         ),
