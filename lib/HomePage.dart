@@ -39,12 +39,60 @@ class _HomePageState extends State<HomePage> {
                 child: Container(
                   child: Row(
                     children: [
-                    Expanded(child: Container(
+                    Expanded(
+                      child: Container(
                       height: double.infinity,
-                      color: Colors.yellow,child: Center(child: Text("test"),),),),
-                    Expanded(child: Container(
-                      height: double.infinity,
-                      color: Colors.blue,child: Center(child: Text("test")),))
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                            width: 180,
+                            height: 180,
+                            decoration: BoxDecoration(
+                                color: Colors.yellow,
+                              shape: BoxShape.circle
+                            ),
+                            child: IconButton(
+                              onPressed: ()=>{
+                                print("container 1")
+                              },
+                              icon: Icon(Icons.lightbulb_outlined),
+                            ),
+                          ),
+                          Container(
+                              height: 50,
+                              child: Center(child: Text("sample container"))),
+                        ],
+                      ),
+                    ),
+                    ),
+                      Expanded(
+                        child: InkWell(
+                          onTap: ()=>{
+                            print("container 2")
+                          },
+                          child: Container(
+                            height: double.infinity,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Container(
+                                  width: 180,
+                                  height: 180,
+                                  decoration: BoxDecoration(
+                                      color: Colors.yellow,
+                                      shape: BoxShape.circle
+                                  ),
+                                  child: Icon(Icons.lightbulb_outlined),
+                                ),
+                                Container(
+                                    height: 50,
+                                    child: Center(child: Text("with Inkwell"))),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
                   ],),
                 )),
             Expanded(child: Container(color: Colors.red,)),
