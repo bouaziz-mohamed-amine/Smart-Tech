@@ -13,8 +13,21 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text("Smart Tech"),
+        title: Text("Smart Tech",
+          style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              fontSize: 20,
+              letterSpacing: 1,
+          ),
+        ),
         backgroundColor: Colors.green.shade700,
+        actions: [
+          Icon(Icons.notifications_off_outlined),
+          IconButton(
+              onPressed: ()=>{},
+              icon: Icon(Icons.notifications_active),)
+        ],
       ),
       body: Container(
         width: double.infinity,
