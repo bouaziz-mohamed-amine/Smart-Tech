@@ -47,64 +47,98 @@ class _HomePageState extends State<HomePage> {
           children: [
             Expanded(
                 child: Container(
+                  color: Colors.grey.shade300,
                   child: Row(
                     children: [
-                    Expanded(
-                      child: Container(
-                      height: double.infinity,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Container(
-                            width: 100,
-                            height: 100,
-                            decoration: BoxDecoration(
-                                color: Colors.yellow,
-                              shape: BoxShape.circle,
-                            ),
-                            child: IconButton(
-                              onPressed: ()=>{
-                                print("container 1")
-                              },
-                              icon: Icon(Icons.lightbulb_outlined,size: 45,),
-                            ),
-                          ),
-                          Container(
-                              height: 50,
-                              child: Center(child: Text("sample container"))),
-                        ],
-                      ),
-                    ),
-                    ),
                       Expanded(
-                        child: InkWell(
-                          onTap: ()=>{
-                            print("container 2")
-                          },
-                          child: Container(
-                            height: double.infinity,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Container(
-                                  width: 100,
-                                  height: 100,
-                                  decoration: BoxDecoration(
-                                      color: Colors.yellow,
-                                      shape: BoxShape.circle
-                                  ),
-                                  child: Icon(Icons.lightbulb_outlined),
+                        child: Container(
+                          color: Colors.blue,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Container(
+                                width: MediaQuery.of(context).size.width *0.4,
+                                height: MediaQuery.of(context).size.width *0.4,
+                                decoration: BoxDecoration(
+                                  color: Colors.red,
+                                  shape: BoxShape.circle,
                                 ),
-                                Container(
-                                    height: 50,
-                                    child: Center(child: Text("with Inkwell"))),
-                              ],
-                            ),
+                                child: IconButton(
+                                  onPressed: ()=>{
+                                    setState(() {
+                                      count++;
+                                    })
+                                  },
+                                  icon: Icon(Icons.ac_unit,color: Colors.white),
+                                ),
+                              ),
+                              Container(
+                                padding: EdgeInsets.only(
+                                  top: MediaQuery.of(context).size.height*0.01,
+                                  bottom:MediaQuery.of(context).size.height*0.01,
+                                ),
+                                color: Colors.greenAccent,
+                                child: Text("sample container",
+                                  style: TextStyle(
+                                      fontSize: 17,
+                                      fontWeight: FontWeight.w600
+
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       ),
-                  ],),
-                )),
+                      Container(
+                        width: MediaQuery.of(context).size.width /30 ,
+                      ),
+                      Expanded(
+                          child: InkWell(
+                            onTap: ()=>{
+                              setState(() {
+                                count--;
+                              })
+                            },
+                            child: Container(
+                              color: Colors.blue,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Container(
+                                      width: MediaQuery.of(context).size.width *0.4,
+                                      height: MediaQuery.of(context).size.width *0.4,
+                                      decoration: BoxDecoration(
+                                        color: Colors.red,
+                                        shape: BoxShape.circle,
+                                      ),
+                                      child: Icon(Icons.ac_unit,color: Colors.white)
+                                  ),
+                                  Container(
+                                    padding: EdgeInsets.only(
+                                      top: MediaQuery.of(context).size.height*0.01,
+                                      bottom:MediaQuery.of(context).size.height*0.01,
+                                    ),
+                                    color: Colors.greenAccent,
+                                    child: Text("sample container",
+                                      style: TextStyle(
+                                          fontSize: 17,
+                                          fontWeight: FontWeight.w600
+
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          )
+                      ),
+                    ],
+                  ),
+                )
+            ),
             Expanded(
                 child: Container(
               color: Colors.grey.shade300,
@@ -124,15 +158,13 @@ class _HomePageState extends State<HomePage> {
                               color: Colors.red,
                               shape: BoxShape.circle,
                             ),
-                            child: Center(
-                              child: IconButton(
-                                onPressed: ()=>{
-                                setState(() {
-                                count++;
-                                })
-                                },
-                                icon: Icon(Icons.ac_unit,color: Colors.white),
-                              ),
+                            child: IconButton(
+                              onPressed: ()=>{
+                              setState(() {
+                              count++;
+                              })
+                              },
+                              icon: Icon(Icons.ac_unit,color: Colors.white),
                             ),
                           ),
                           Container(
@@ -156,15 +188,52 @@ class _HomePageState extends State<HomePage> {
                   Container(
                     width: MediaQuery.of(context).size.width /30 ,
                   ),
-                  Expanded(child: Container(
-                    child: Text(count.toString()),
+              Expanded(
+                child: InkWell(
+                  onTap: ()=>{
+                  setState(() {
+                  count--;
+                  })
+                  },
+                  child: Container(
+                    color: Colors.blue,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Container(
+                            width: MediaQuery.of(context).size.width *0.4,
+                            height: MediaQuery.of(context).size.width *0.4,
+                            decoration: BoxDecoration(
+                              color: Colors.red,
+                              shape: BoxShape.circle,
+                            ),
+                            child: Icon(Icons.ac_unit,color: Colors.white)
+                        ),
+                        Container(
+                          padding: EdgeInsets.only(
+                            top: MediaQuery.of(context).size.height*0.01,
+                            bottom:MediaQuery.of(context).size.height*0.01,
+                          ),
+                          color: Colors.greenAccent,
+                          child: Text("sample container",
+                            style: TextStyle(
+                                fontSize: 17,
+                                fontWeight: FontWeight.w600
+
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                  ),
+                )
+              ),
                 ],
               ),
             )
             ),
-            Expanded(child: Container(color: Colors.yellow,))
+            Expanded(child: Container(child: Text(count.toString()),))
           ],
         ),
       ),
