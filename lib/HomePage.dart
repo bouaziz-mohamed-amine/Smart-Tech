@@ -10,7 +10,13 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
 
 
+  var count;
 
+  @override
+  void initState() {
+    // TODO: implement initState
+    count=0;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -50,8 +56,8 @@ class _HomePageState extends State<HomePage> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Container(
-                            width: 180,
-                            height: 180,
+                            width: 100,
+                            height: 100,
                             decoration: BoxDecoration(
                                 color: Colors.yellow,
                               shape: BoxShape.circle,
@@ -81,8 +87,8 @@ class _HomePageState extends State<HomePage> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Container(
-                                  width: 180,
-                                  height: 180,
+                                  width: 100,
+                                  height: 100,
                                   decoration: BoxDecoration(
                                       color: Colors.yellow,
                                       shape: BoxShape.circle
@@ -99,23 +105,60 @@ class _HomePageState extends State<HomePage> {
                       ),
                   ],),
                 )),
-            Expanded(child:
-            Container(
+            Expanded(
+                child: Container(
               color: Colors.grey.shade300,
               child: Row(
                 children: [
-                  Container(
-                    margin: EdgeInsets.only(right: 100),
-                    width: MediaQuery.of(context).size.width/4,
-                    height: MediaQuery.of(context).size.width/4,
+                  Expanded(
+                    child: Container(
                     color: Colors.blue,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Container(
+                            width: MediaQuery.of(context).size.width *0.4,
+                            height: MediaQuery.of(context).size.width *0.4,
+                            decoration: BoxDecoration(
+                              color: Colors.red,
+                              shape: BoxShape.circle,
+                            ),
+                            child: Center(
+                              child: IconButton(
+                                onPressed: ()=>{
+                                setState(() {
+                                count++;
+                                })
+                                },
+                                icon: Icon(Icons.ac_unit,color: Colors.white),
+                              ),
+                            ),
+                          ),
+                          Container(
+                            padding: EdgeInsets.only(
+                                top: MediaQuery.of(context).size.height*0.01,
+                                bottom:MediaQuery.of(context).size.height*0.01,
+                            ),
+                            color: Colors.greenAccent,
+                            child: Text("sample container",
+                            style: TextStyle(
+                              fontSize: 17,
+                              fontWeight: FontWeight.w600
+
+                            ),
+                            ),
+                          ),
+                        ],
+                      ),
+                  ),
                   ),
                   Container(
-                    padding: EdgeInsets.only(left: 14,top: 20,bottom: 30),
-                    width: 100,
-                    height: 100,
-                    color: Colors.red,
-                    child: Container(child: Text("test"),color: Colors.blue,),
+                    width: MediaQuery.of(context).size.width /30 ,
+                  ),
+                  Expanded(child: Container(
+                    child: Text(count.toString()),
+                  ),
                   ),
                 ],
               ),
