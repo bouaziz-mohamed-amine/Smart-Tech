@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smattech/HistoryPage.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -35,7 +36,14 @@ class _HomePageState extends State<HomePage> {
         actions: [
           Icon(Icons.notifications_off_outlined),
           IconButton(
-              onPressed: ()=>{},
+              onPressed: ()=>{
+              Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => History()
+              ),
+              )
+              },
               icon: Icon(Icons.notifications_active),)
         ],
       ),
