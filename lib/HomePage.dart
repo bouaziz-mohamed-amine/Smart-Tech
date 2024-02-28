@@ -55,7 +55,6 @@ class _HomePageState extends State<HomePage> {
           children: [
             Expanded(
                 child: Container(
-                  color: Colors.grey.shade300,
                   child: Row(
                     children: [
                       Expanded(
@@ -149,7 +148,6 @@ class _HomePageState extends State<HomePage> {
             ),
             Expanded(
                 child: Container(
-              color: Colors.grey.shade300,
               child: Row(
                 children: [
                   Expanded(
@@ -241,7 +239,75 @@ class _HomePageState extends State<HomePage> {
               ),
             )
             ),
-            Expanded(child: Container(child: Text(count.toString()),))
+            Expanded(
+                child: Container(
+                  child: Row(
+                    children: [
+                      Expanded(
+                          child: Container(
+                            color: Colors.red,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Container(
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: Colors.blue,
+                                  ),
+                                  width: MediaQuery.of(context).size.width *0.4,
+                                  height: MediaQuery.of(context).size.width *0.4,
+                                  child: IconButton(
+                                      onPressed: ()=>{
+                                        setState(() {
+                                          count++;
+                                        })
+                                      },
+                                      icon: Icon(Icons.add_a_photo_rounded,color: Colors.white,)),
+                                ),
+                                Container(
+                                  padding: EdgeInsets.only(
+                                    top: 10,
+                                    bottom: 10
+                                  ),
+                                  color: Colors.blue,
+                                  child: Text("sample container"),
+                                ),
+                              ],
+                            ),
+                          )
+                      ),
+                      Container(
+                        width: MediaQuery.of(context).size.width /30 ,
+                      ),
+                      Expanded(
+                          child: InkWell(
+                            onTap: ()=>{
+                              setState(() {
+                                count--;
+                              })
+                            },
+                            child: Container(
+                              color: Colors.blue,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Container(
+                                    width: MediaQuery.of(context).size.width*0.4,
+                                    height: MediaQuery.of(context).size.width*0.4,
+                                    decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        color: Colors.red
+                                    ),
+                                    child: Icon(Icons.access_alarms,color: Colors.white,),
+                                  ),
+                                  Text(count.toString()),
+                                ],),),
+                          )
+                      ),
+                    ],
+                  ),
+                ))
           ],
         ),
       ),
