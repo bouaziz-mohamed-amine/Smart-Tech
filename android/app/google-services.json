@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "100768026651",
+    "project_id": "smart-tech-7a97d",
+    "storage_bucket": "smart-tech-7a97d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:100768026651:android:c1e312c820dc34d464a8be",
+        "android_client_info": {
+          "package_name": "com.example.smattech"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAc1ANCvotKtoa8VATpsWXLuNnuZh0fULk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

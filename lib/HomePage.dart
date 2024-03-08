@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:smattech/HistoryPage.dart';
 
@@ -14,6 +15,18 @@ class _HomePageState extends State<HomePage> {
   var count;
   late bool notifications;
   late bool lights;
+  late bool security;
+  CollectionReference users = FirebaseFirestore.instance.collection('users');
+  Future<void> addUser() {
+    // Call the user's CollectionReference to add a new user
+    return users
+        .add({
+      'user': 'fullName', // John Doe
+      'action': 'company', // Stokes and Sons
+    })
+        .then((value) => print("User Added"))
+        .catchError((error) => print("Failed to add user: $error"));
+  }
 
 
   @override
@@ -22,6 +35,7 @@ class _HomePageState extends State<HomePage> {
     count=0;
     notifications=true;
     lights=true;
+    security =false;
   }
 
   @override
@@ -86,10 +100,11 @@ class _HomePageState extends State<HomePage> {
                                   shape: BoxShape.circle,
                                 ),
                                 child: IconButton(
-                                  onPressed: ()=>{
+                                  onPressed: security==true?null:()=>{
+                                    // addUser(),
                                     setState(() {
                                       lights=!lights;
-                                    })
+                                    }),
                                   },
                                   icon: Icon(
                                      Icons.lightbulb_outlined,
@@ -126,7 +141,7 @@ class _HomePageState extends State<HomePage> {
                               })
                             },
                             child: Container(
-                              color: Colors.blue,
+                              color: Colors.white,
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -135,10 +150,10 @@ class _HomePageState extends State<HomePage> {
                                       width: MediaQuery.of(context).size.width *0.4,
                                       height: MediaQuery.of(context).size.width *0.4,
                                       decoration: BoxDecoration(
-                                        color: Colors.red,
+                                        color: Colors.green.shade700,
                                         shape: BoxShape.circle,
                                       ),
-                                      child: Icon(Icons.ac_unit,color: Colors.white)
+                                      child: Icon(Icons.flash_on_outlined,color: Colors.white)
                                   ),
                                   Container(
                                     padding: EdgeInsets.only(
@@ -175,7 +190,7 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   Expanded(
                     child: Container(
-                    color: Colors.blue,
+                    color: Colors.white,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
@@ -184,7 +199,7 @@ class _HomePageState extends State<HomePage> {
                             width: MediaQuery.of(context).size.width *0.4,
                             height: MediaQuery.of(context).size.width *0.4,
                             decoration: BoxDecoration(
-                              color: Colors.red,
+                              color: Colors.green.shade700,
                               shape: BoxShape.circle,
                             ),
                             child: IconButton(
@@ -193,7 +208,7 @@ class _HomePageState extends State<HomePage> {
                               count++;
                               })
                               },
-                              icon: Icon(Icons.ac_unit,color: Colors.white),
+                              icon: Icon(Icons.wb_sunny_outlined,color: Colors.white),
                             ),
                           ),
                           Container(
@@ -225,7 +240,7 @@ class _HomePageState extends State<HomePage> {
                   })
                   },
                   child: Container(
-                    color: Colors.blue,
+                    color: Colors.white,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -234,10 +249,10 @@ class _HomePageState extends State<HomePage> {
                             width: MediaQuery.of(context).size.width *0.4,
                             height: MediaQuery.of(context).size.width *0.4,
                             decoration: BoxDecoration(
-                              color: Colors.red,
+                              color: Colors.green.shade700,
                               shape: BoxShape.circle,
                             ),
-                            child: Icon(Icons.ac_unit,color: Colors.white)
+                            child: Icon(Icons.window_outlined ,color: Colors.white)
                         ),
                         Container(
                           padding: EdgeInsets.only(
@@ -271,32 +286,41 @@ class _HomePageState extends State<HomePage> {
                     children: [
                       Expanded(
                           child: Container(
-                            color: Colors.red,
+                            color: Colors.white,
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Container(
                                   decoration: BoxDecoration(
                                     shape: BoxShape.circle,
-                                    color: Colors.blue,
+                                    color: security==false?Colors.green.shade700 : Colors.grey.shade100,
                                   ),
                                   width: MediaQuery.of(context).size.width *0.4,
                                   height: MediaQuery.of(context).size.width *0.4,
                                   child: IconButton(
                                       onPressed: ()=>{
                                         setState(() {
-                                          count++;
+                                          security=!security;
+                                          if(security==true){
+                                            lights=false;
+                                          }
                                         })
                                       },
-                                      icon: Icon(Icons.add_a_photo_rounded,color: Colors.white,)),
+                                      icon: Icon(Icons.house_outlined,color: Colors.white,)),
                                 ),
                                 Container(
                                   padding: EdgeInsets.only(
                                     top: 10,
                                     bottom: 10
                                   ),
-                                  color: Colors.blue,
-                                  child: Text("Everything off"),
+                                  child: security==true?Text("Everything Off",style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w600
+
+                                  ),) : Text("Everything On",style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w600
+                                  ),),
                                 ),
                               ],
                             ),
@@ -307,14 +331,14 @@ class _HomePageState extends State<HomePage> {
                       ),
                       Expanded(
                           child: Container(
-                            color: Colors.red,
+                            color: Colors.white,
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Container(
                                   decoration: BoxDecoration(
                                     shape: BoxShape.circle,
-                                    color: Colors.blue,
+                                    color: Colors.green.shade700,
                                   ),
                                   width: MediaQuery.of(context).size.width *0.4,
                                   height: MediaQuery.of(context).size.width *0.4,
@@ -324,7 +348,7 @@ class _HomePageState extends State<HomePage> {
                                           count++;
                                         })
                                       },
-                                      icon: Icon(Icons.add_a_photo_rounded,color: Colors.white,)),
+                                      icon: Icon(Icons.tv_outlined,color: Colors.white,)),
                                 ),
                                 Container(
                                   padding: EdgeInsets.only(
